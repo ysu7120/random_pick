@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>행운의 뽑기판</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="board">
+    <!-- 공원 배경 장식 -->
+    <div class="decor decor--clover1">🍀</div>
+    <div class="decor decor--clover2">☘️</div>
+    <div class="decor decor--clover3">🍀</div>
+    <div class="decor decor--tree1">🌳</div>
+    <div class="decor decor--tree2">🌳</div>
+    <div class="decor decor--flower1">🌷</div>
+    <div class="decor decor--flower2">🌼</div>
+    <div class="decor decor--bee">🐝</div>
+    <div class="decor decor--butterfly">🦋</div>
+
+    <!-- 타이틀 -->
+    <header class="header">
+      <h1 class="title">🍀 행운의 뽑기판 🍀</h1>
+    </header>
+
+    <!-- 가로 3분할: 상품(좌) · 뽑기 그리드(중앙) · 남은개수(우) -->
+    <div class="layout">
+      <!-- 등수별 상품 + 총 개수 -->
+      <section class="prizes" aria-label="등수별 상품과 총 개수">
+        <div class="prize-row">
+          <span class="prize-row__rank rank-1">1등</span>
+          <input class="prize-row__input" id="prize-1" type="text" placeholder="상품을 입력해주세요." />
+          <span class="prize-row__total">총 <b>2</b>개</span>
+        </div>
+        <div class="prize-row">
+          <span class="prize-row__rank rank-2">2등</span>
+          <input class="prize-row__input" id="prize-2" type="text" placeholder="상품을 입력해주세요." />
+          <span class="prize-row__total">총 <b>10</b>개</span>
+        </div>
+        <div class="prize-row">
+          <span class="prize-row__rank rank-3">3등</span>
+          <input class="prize-row__input" id="prize-3" type="text" placeholder="상품을 입력해주세요." />
+          <span class="prize-row__total">총 <b>15</b>개</span>
+        </div>
+        <div class="prize-row">
+          <span class="prize-row__rank rank-4">4등</span>
+          <input class="prize-row__input" id="prize-4" type="text" placeholder="상품을 입력해주세요." />
+          <span class="prize-row__total">총 <b>30</b>개</span>
+        </div>
+        <div class="prize-row">
+          <span class="prize-row__rank rank-5">5등</span>
+          <input class="prize-row__input" id="prize-5" type="text" placeholder="상품을 입력해주세요." />
+          <span class="prize-row__total">총 <b>43</b>개</span>
+        </div>
+      </section>
+
+      <!-- 뽑기 카드 그리드 (10 x 10 = 100) — 화면 중앙 -->
+      <main class="grid" id="grid" aria-label="뽑기판"></main>
+
+      <!-- 남은 개수 (별도 집합) — 오른쪽 -->
+      <aside class="remaining" aria-label="등수별 남은 개수">
+        <h2 class="remaining__title">남은 개수</h2>
+        <ul class="remaining__list">
+          <li class="remaining__item"><span class="chip rank-1">1등</span><span class="remaining__count" id="count-1">2</span></li>
+          <li class="remaining__item"><span class="chip rank-2">2등</span><span class="remaining__count" id="count-2">10</span></li>
+          <li class="remaining__item"><span class="chip rank-3">3등</span><span class="remaining__count" id="count-3">15</span></li>
+          <li class="remaining__item"><span class="chip rank-4">4등</span><span class="remaining__count" id="count-4">30</span></li>
+          <li class="remaining__item"><span class="chip rank-5">5등</span><span class="remaining__count" id="count-5">43</span></li>
+        </ul>
+        <button type="button" class="reset-btn" id="resetBtn">다시 뽑기</button>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ===== 뽑기 결과 모달 ===== -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__dialog" id="dialog" role="dialog" aria-modal="true" aria-label="뽑기 결과">
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+      <div class="gift" id="gift">
+        <div class="gift__box"></div>
+        <div class="gift__lid">
+          <div class="gift__bow"></div>
+        </div>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <p class="result__congrats" id="modalCongrats">축하합니다!</p>
+        <p class="result__rank" id="modalRank">3등</p>
+        <p class="result__prize" id="modalPrize"></p>
+      </div>
+
+      <button type="button" class="next-btn" id="nextBtn" hidden>다음 뽑기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
